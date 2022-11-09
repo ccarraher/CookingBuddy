@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const recipeController = require('./routes/recipeController');
-const registerController = require('./routes/registerController')
+const recipeController = require('./controllers/recipeController');
+const registerController = require('./controllers/registerController')
 require('dotenv').config();
 const mongoString = process.env.DATABASE_URL
 const router = express.Router()
