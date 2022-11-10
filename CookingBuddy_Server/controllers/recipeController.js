@@ -9,11 +9,19 @@ recipeController.post('/post', async (req, res) => {
     //make message
     let msg = "";
 
-    //validate title, ingredients, steps, images, price
+    //validate title, ingredients, steps, images(optional), price(optional)
     //if it looks good create the message :)
-    if (validateTitle(req.body.title) )
+    if (validateTitle(req.body.title) && validateIngredients(req.body.ingredients) && validateSteps(req.body.steps)
+    && validateImages(req.body.images) && validatePrice(req.body.price))
     {
         msg = "Upload Successful"
+        //create recipe object
+        //add recipe object to DB
+        //dipslay msg to user
+    }
+    else {
+        msg = "One or more of the entries is incorrect, please try again";
+        //display msg to user
     }
 
     
@@ -109,3 +117,38 @@ function validateSteps(steps){
     }
 }
 
+function validateImages(images){
+    // can be empty
+    // can't be > 1000
+    // can only be .jpeg, .jpg, .png
+    
+
+    if (images.length > 0) { 
+        if (images.length < 1000 && (images.includes(".png") || images.includes(".jpeg") || images.includes(".jpg"))) {
+            return true
+        }
+        else {
+            return false;
+        }
+    }
+    else { //empty
+        return true;
+    }
+}
+
+
+function validatePrice(price){
+    // can be empty
+    // represents a nonnegative number
+    if (price.length > 0) { 
+        if (price > 0.0) {
+            return true
+        }
+        else {
+            return false;
+        }
+    }
+    else { //empty
+        return true;
+    }
+}
