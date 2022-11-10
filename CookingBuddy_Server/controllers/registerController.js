@@ -6,7 +6,25 @@ const registerController = express.Router()
 module.exports = registerController;
 
 registerController.post('/post', async (req, res) => {
+    //validate req user items
+    //if valid, create a new user object
+    let msg = ""
+
+    let validEmail = Boolean(emailValidator(req.body.email)); //I'm not sure if these are the correct attribute names
+    let validPhoneNumber = Boolean(phoneNumberValidator(req.body.phoneNumber));
+    let validFirstName = Boolean(firstNameValidator(req.body.firstName));
+    let validLastName = Boolean(lastNameValidator(req.body.lastName));
+    let validPassword = Boolean(passwordValidator(req.body.password, req.body.passwordConfirmation))
+
+    if (validEmail && validPhoneNumber && validFirstName && validLastName && validPassword) {
+        //create a new user object
+        //store in DB
+    }
+    else {
+        msg = "Invalid input, registration failed"
+    }
     const data = new User({
+        //fix these with new attributes? not sure how this is different from a class and don't want to break -ZL
         name: req.body.name,
         age: req.body.age
     })
@@ -66,3 +84,58 @@ registerController.delete('/delete/:id', async (req, res) => {
         res.status(400).json({ message: error.message })
     }
 })
+
+//validator functions, simplified
+//
+//
+//
+
+function emailValidator(email){
+    if( /(.+)@(.+){2,}\.(.+){2,}/.test(email) ){
+        return true;
+    } 
+    else {
+        return false;
+    }
+}
+
+function phoneNumberValidator(phoneNumber)
+{
+    //ignore format, validate numbers
+    var phoneRe = /^[2-9]\d{2}[2-9]\d{2}\d{4}$/;
+    var digits = phoneNumber.replace(/\D/g, "");
+    return phoneRe.test(digits);
+}
+
+function firstNameValidator(firstName)
+{
+    if (firstName.length > 0 && firstName.length < 20) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function lastNameValidator(lastName)
+{
+    if (lastName.length > 0 && lastName.length < 25) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function passwordValidator(password, passwordConfirmation)
+{
+    return /[A-Z]/       .test(password) && //one uppercase
+           /[a-z]/       .test(password) && // one lowercase
+           /[0-9]/       .test(password) && // one digit
+           /[^A-Za-z0-9]/.test(password) && // one special symbol
+           pw.length > 4 && 
+           password == passwordConfirmation
+}
+
+
+
