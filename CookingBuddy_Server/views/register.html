@@ -12,9 +12,40 @@
 </head>
 
 <body>
+  <!--action="" determines where data is sent -->
+  <h1>Create an Account</h1>
+  <form onsubmit="register()">
+    <label for = "email">Email</label>
+    <br>
+    <input type="text" id ="email"></input>
+    <br>
 
-  <h1>Register!</h1>
+    <label for = "phoneNumber">Phone Number</label>
+    <br>
+    <input type="text" id = "phoneNumber"></input>
+    <br>
 
+    <label for ="firstName">First Name</label>
+    <br>
+    <input type="text" id = "firstName"></input>
+    <br>
+
+    <label for ="lastName">Last Name</label>
+    <br>
+    <input type="text" id = "lastName"></input>
+    <br>
+
+    <label for ="password">Password</label>
+    <br>
+    <input type="password" id = "password"></input>
+    <br>
+
+    <label for = "password2">Re-enter Password</label>
+    <br>
+    <input type="password" id = "password2"></input>
+    <br>
+    <button class="submitButton" type="submit">Submit</button>
+  </form>
   <script src="js/script.js"></script>
 </body>
 
