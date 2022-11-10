@@ -6,6 +6,18 @@ const recipeController = express.Router()
 module.exports = recipeController;
 
 recipeController.post('/post', async (req, res) => {
+    //make message
+    let msg = "";
+
+    //validate title, ingredients, steps, images, price
+    //if it looks good create the message :)
+    if (validateTitle(req.body.title) )
+    {
+        msg = "Upload Successful"
+    }
+
+    
+
     const data = new Recipe({
         name: req.body.name,
         age: req.body.age
@@ -66,3 +78,34 @@ recipeController.delete('/delete/:id', async (req, res) => {
         res.status(400).json({ message: error.message })
     }
 })
+
+function validateTitle(title){
+    //not too big, not too small, and no brackets (possible code injection)
+    if (title.length < 30 && title.length > 0 && !title.includes("<")) { 
+        return true
+    }
+    else {
+        return false
+    }
+}
+
+function validateIngredients(ingredients){
+    //not too big, not too small, and no brackets (possible code injection)
+    if (ingredients.length < 1000 && ingredients.length > 0 && !ingredients.includes("<")) { 
+        return true
+    }
+    else {
+        return false
+    }
+}
+
+function validateSteps(steps){
+    //not too big, not too small, and no brackets (possible code injection)
+    if (steps.length < 5000 && !steps.includes("<")) { 
+        return true
+    }
+    else {
+        return false
+    }
+}
+
