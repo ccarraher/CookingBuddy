@@ -8,17 +8,17 @@ const recipeSchema = new mongoose.Schema({
         type: String
     }
 
-    authorName: {
+    ,authorName: {
         required: true,
         type: String
     }
 
-    ingredients: {
+    ,ingredients: {
         required: true,
         type: String
     }
 
-    steps: {
+    ,steps: {
         required: true,
         type: String
     }
