@@ -7,7 +7,7 @@ module.exports = recipeController;
 
 recipeController.post('/post', async (req, res) => {
     //make message
-    let msg = "";
+//     let msg = "";
 
     //validate title, ingredients, steps, images(optional), price(optional)
     //if it looks good create the message :)
