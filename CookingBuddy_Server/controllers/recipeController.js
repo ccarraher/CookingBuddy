@@ -18,6 +18,9 @@ recipeController.post('/post', async (req, res) => {
         //create recipe object
         const data = new Recipe({
             title: req.body.title,
+            ingredients: req.body.ingredients,
+            steps: req.body.steps,
+            price: req.body.price,
         })
         
         //add recipe object to DB
