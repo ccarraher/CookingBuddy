@@ -18,6 +18,14 @@ registerController.post('/post', async (req, res) => {
 
     if (validEmail && validPhoneNumber && validFirstName && validLastName && validPassword) {
         //create a new user object
+        const data = new User({
+            email: req.body.email,
+            phoneNumber: req.body.phoneNumber,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            password: req.body.password,
+            passwordConfirmation: req.body.passwordConfirmation
+        })
         //store in DB
     }
     else {
