@@ -14,39 +14,57 @@
 <body>
   <!--action="" determines where data is sent -->
   <h1>Create an Account</h1>
-  <form onsubmit="register()">
+  <form onsubmit="register(this.form); return false;">
     <label for = "email">Email</label>
     <br>
-    <input type="text" id ="email"></input>
+    <input type="text" id ="email" name = "email" value = ""></input>
     <br>
 
     <label for = "phoneNumber">Phone Number</label>
     <br>
-    <input type="text" id = "phoneNumber"></input>
+    <input type="text" id = "phoneNumber" name = "phoneNumber" value = ""></input>
     <br>
 
     <label for ="firstName">First Name</label>
     <br>
-    <input type="text" id = "firstName"></input>
+    <input type="text" id = "firstName" name = "firstName" value = ""></input>
     <br>
 
     <label for ="lastName">Last Name</label>
     <br>
-    <input type="text" id = "lastName"></input>
+    <input type="text" id = "lastName" name = "lastName" value = ""></input>
     <br>
 
     <label for ="password">Password</label>
     <br>
-    <input type="password" id = "password"></input>
+    <input type="password" id = "password" name = "password" value = ""></input>
     <br>
 
     <label for = "password2">Re-enter Password</label>
     <br>
-    <input type="password" id = "password2"></input>
+    <input type="password" id = "password2" name = "password2" value = ""></input>
     <br>
-    <button class="submitButton" type="submit">Submit</button>
+    <button class="submitButton" type="button" onClick="register(this.form)">Submit</button>
   </form>
-  <script src="js/script.js"></script>
+  <script>
+
+    function register(form) {
+     
+      var emailElement = form.email.value;
+      console.log(emailElement)
+      var phoneNumberElement = form.phoneNumber.value;
+      console.log(phoneNumberElement)
+      var firstNameElement = form.firstName.value;
+      console.log(firstNameElement)
+      var lastNameElement = form.lastName.value;
+      console.log(lastNameElement)
+      var passwordElementOne = form.password.value;
+      console.log(passwordElementOne)
+      var passwordElementTwo = form.password2.value;
+      console.log(passwordElementTwo)
+    
+    }
+  </script>
 </body>
 
 </html>
