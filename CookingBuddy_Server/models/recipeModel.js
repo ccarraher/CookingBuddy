@@ -3,12 +3,7 @@ const mongoose = require('mongoose');
 // Creates a new schema for the database
 const recipeSchema = new mongoose.Schema({
 
-    recipeName: {
-        required: true,
-        type: String
-    }
-
-    ,authorName: {
+    title: {
         required: true,
         type: String
     }
@@ -21,6 +16,16 @@ const recipeSchema = new mongoose.Schema({
     ,steps: {
         required: true,
         type: String
+    }
+
+    ,images: {
+        required: false,
+        type: String
+    }
+
+    ,price: {
+        required: true,
+        type: Number
     }
 })
 
