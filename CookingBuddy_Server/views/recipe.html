@@ -13,9 +13,57 @@
 
 <body>
 
-  <h1>Recipe</h1>
+  <h1>Upload a Recipe</h1>
+  <form onsubmit="upload(this.form); return false;">
+    <label for = "recipeName">Recipe Title</label>
+    <br>
+    <input type="text" id ="recipeName" name = "recipeName" value = ""></input>
+    <br>
 
-  <script src="js/script.js"></script>
+    <label for = "ingredients">Ingredients</label>
+    <br>
+    <textarea id ="ingredients" name = "ingredients" value = "" style="height:200px"></textarea>
+    <br>
+
+    <label for = "steps">Steps</label>
+    <br>
+    <textarea id ="steps" name = "steps" value = "" style="height:200px"></textarea>
+    <br>
+
+    <label for = "price">Price (optional)</label>
+    <br>
+    <input type="text" id ="price" name = "price" value = ""></input>
+    <br>
+    <br>
+
+    <label for = "image">Image (optional)</label>
+    <br>
+    <input type="file" accept ="image/*" id ="image" name = "image" value = ""></input>
+    <br>
+    <br>
+
+    <button class="submitButton" type="button" onClick="upload(this.form)">Submit</button>
+  </form>
+
+  <script>
+    function upload(form) {
+     
+     var recipeNameElement = form.recipeName.value;
+     console.log(recipeNameElement)
+
+     var stepsElement = form.steps.value;
+     console.log(stepsElement)
+
+     var ingredientsElement = form.ingredients.value;
+     console.log(ingredientsElement)
+
+     var priceElement = form.price.value;
+     console.log(priceElement)
+
+     var imageElement = form.image.value;
+     console.log(imageElement)
+   }
+  </script>
 </body>
 
 </html>
