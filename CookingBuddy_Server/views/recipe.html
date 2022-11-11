@@ -44,6 +44,7 @@
 
     <button class="submitButton" type="button" onClick="upload(this.form)">Submit</button>
   </form>
+  <!--"images": ${imageElement}-->
 
   <script>
     function upload(form) {
@@ -62,6 +63,23 @@
 
      var imageElement = form.image.value;
      console.log(imageElement)
+
+     const Http = new XMLHttpRequest();
+     const url='http://localhost:3000/recipe-api/post';
+     let data = {
+     "title": recipeNameElement,
+     "ingredients": ingredientsElement,
+     "steps": stepsElement,
+     "price": priceElement,
+    }
+     Http.open("POST", url);
+     Http.setRequestHeader("Accept","application/json")
+     Http.setRequestHeader("Content-Type","application/json")
+     Http.send(JSON.stringify(data));
+
+     Http.onreadystatechange = (e) => {
+      console.log(Http.responseText)
+    }
    }
   </script>
 </body>
