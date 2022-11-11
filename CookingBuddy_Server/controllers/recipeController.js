@@ -12,31 +12,30 @@ recipeController.post('/post', async (req, res) => {
     //validate title, ingredients, steps, images(optional), price(optional)
     //if it looks good create the message :)
     if (validateTitle(req.body.title) && validateIngredients(req.body.ingredients) && validateSteps(req.body.steps)
-    && validateImages(req.body.images) && validatePrice(req.body.price))
+    && validatePrice(req.body.price))
     {
         msg = "Upload Successful"
         //create recipe object
+        const data = new Recipe({
+            title: req.body.title,
+        })
+        
         //add recipe object to DB
+        try {
+            const dataToSave = await data.save();
+            res.status(200).json(dataToSave)
+        } catch(error) {
+            res.status(400).json({message: error.message})
+        }
         //dipslay msg to user
     }
     else {
         msg = "One or more of the entries is incorrect, please try again";
+        res.status(400).json({message: msg})
         //display msg to user
     }
-
     
 
-    const data = new Recipe({
-        name: req.body.name,
-        age: req.body.age
-    })
-
-    try {
-        const dataToSave = await data.save();
-        res.status(200).json(dataToSave)
-    } catch(error) {
-        res.status(400).json({message: error.message})
-    }
 })
 
 recipeController.get('/getAll', async (req, res) => {
