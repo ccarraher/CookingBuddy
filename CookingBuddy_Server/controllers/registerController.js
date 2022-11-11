@@ -27,22 +27,23 @@ registerController.post('/post', async (req, res) => {
             passwordConfirmation: req.body.passwordConfirmation
         })
         //store in DB
+        try {
+            const dataToSave = await data.save();
+            res.status(200).json(dataToSave)
+        } catch(error) {
+            res.status(400).json({message: error.message})
+        }
     }
     else {
         msg = "Invalid input, registration failed"
+        res.status(400).json({message: msg})
     }
-    const data = new User({
+    /*const data = new User({
         //fix these with new attributes? not sure how this is different from a class and don't want to break -ZL
         name: req.body.name,
         age: req.body.age
-    })
+    })*/
 
-    try {
-        const dataToSave = await data.save();
-        res.status(200).json(dataToSave)
-    } catch(error) {
-        res.status(400).json({message: error.message})
-    }
 })
 
 registerController.get('/getAll', async (req, res) => {
