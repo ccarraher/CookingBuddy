@@ -42,6 +42,10 @@ router.get('/recipe', (req, res) => {
 
 
 app.use(express.json());
+
+//telling express module that views has assets, this allows the css styling to be applied, -ZL
+app.use(express.static(__dirname + '/views'));
+
 // Tell the app to use the registerController for any URLs that have /register, for example localhost:3000/register + the path from registerController (I'll explain in there)
 app.use('/', router)
 app.use('/register-api', registerController)
