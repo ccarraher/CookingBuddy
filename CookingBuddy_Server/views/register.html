@@ -8,44 +8,81 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="css/style.css" rel="stylesheet">
+  <link rel = "stylesheet" href="/styles.css" type="text/css">
+
+  <!-- Linking font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
 </head>
 
+
+
 <body>
+
+  <Header class="header">
+    <a href="/home.html" class="logo">CookingBuddy</a>
+    
+    <div class="links">
+      <a href="/recipe" class="header_link">Upload</a>
+      <button class="button-3" onclick="location.href='/register.html'" type="button">Register</button>
+    </div>
+  </Header>
+
+  <!-- tan box around everything-->
+  <div class="page">
+    <div class="box">
   <!--action="" determines where data is sent -->
-  <h1>Create an Account</h1>
-  <form onsubmit="register(this.form); return false;">
+  <h1 id="createtext">Create an Account</h1>
+  <form class="form" onsubmit="register(this.form); return false;">
     <label for = "email">Email</label>
     <br>
     <input type="text" id ="email" name = "email" value = ""></input>
     <br>
+
+    <div class="space"></div>
 
     <label for = "phoneNumber">Phone Number</label>
     <br>
     <input type="text" id = "phoneNumber" name = "phoneNumber" value = ""></input>
     <br>
 
+    <div class="space"></div>
+
     <label for ="firstName">First Name</label>
     <br>
     <input type="text" id = "firstName" name = "firstName" value = ""></input>
     <br>
+
+    <div class="space"></div>
 
     <label for ="lastName">Last Name</label>
     <br>
     <input type="text" id = "lastName" name = "lastName" value = ""></input>
     <br>
 
+    <div class="space"></div>
+
     <label for ="password">Password</label>
     <br>
     <input type="password" id = "password" name = "password" value = ""></input>
     <br>
 
+    <div class="space"></div>
+
     <label for = "password2">Re-enter Password</label>
     <br>
     <input type="password" id = "password2" name = "password2" value = ""></input>
     <br>
+
+    <div class="space"></div>
     <button class="submitButton" type="button" onClick="register(this.form)">Submit</button>
   </form>
+
+
+  </div> <!--box-->
+  </div> <!--page-->
+
   <script>
 
     function register(form) {

@@ -8,14 +8,27 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="css/style.css" rel="stylesheet">
+  <link rel = "stylesheet" href="/styles.css" type="text/css">
+
+  <!-- Linking font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+  <Header class="header">
+    <a href="/home.html" class="logo">CookingBuddy</a>
+    
+    <div class="links">
+      <a href="/recipe" class="header_link">Upload</a>
+      <button class="button-3" onclick="location.href='/register.html'" type="button">Register</button>
+    </div>
+  </Header>
+
   <h1>Home</h1>
-  <a href="/register">Register Page</a>
-  <a href="/recipe">Recipe Page</a>
+  <p>(Search Bar goes here)</p>
 
   <script src="js/script.js"></script>
 </body>
