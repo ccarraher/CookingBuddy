@@ -27,10 +27,69 @@
     </div>
   </Header>
 
-  <h1>Home</h1>
-  <p>(Search Bar goes here)</p>
+  <div class="content">
+    <form id="form">
+      <input id="search" name="search" type="text" value="" placeholder="Enter a recipe"></input>
+      <button class="button-3" type="button" onclick="fetchRecipe(this.form)">Search</button>
+    </form>
+    <div id="card-container" class="card-container"></div>
+  </div>
 
-  <script src="js/script.js"></script>
+  <script>
+    var recipes;
+    const Http = new XMLHttpRequest();
+    const url='http://localhost:3000/recipe-api/getAll';
+    Http.open('GET', url)
+    Http.send()
+    Http.onreadystatechange = (e) => {
+      if(Http.readyState == XMLHttpRequest.DONE) {
+        recipes = JSON.parse(Http.responseText)
+      }
+    }
+    
+    function fetchRecipe(form) {
+      var existingCards = document.querySelectorAll('.card')
+      if(existingCards.length > 0) {
+        existingCards.forEach(card => {
+          card.remove()
+        })
+      }
+      const input = form.search.value
+      const res = recipes.filter(x => x.title.toLowerCase().includes(input.toLowerCase()))
+      buildRecipeCards(res)
+    }
+
+    function buildRecipeCards(recipes) {
+      for(var i = 0; i < recipes.length; i++) {
+        var card = document.createElement('div')
+        card.id = recipes[i]._id
+        card.className = 'card'
+        var imgContainer = document.createElement('div')
+        imgContainer.className = 'img-container'
+        var img = document.createElement('img')
+        img.src = recipes[i].images
+        img.className = 'img'
+        imgContainer.appendChild(img)
+        var cardBody = document.createElement('div')
+        cardBody.className = 'card-body'
+        var tag = document.createElement('span')
+        tag.innerText = '$' + recipes[i].price
+        tag.className = "tag tag-orange"
+        var title = document.createElement('p')
+        title.className = 'title'
+        title.innerText = recipes[i].title
+        var link = document.createElement('a')
+        link.href = `http://localhost:3000/recipe/${recipes[i]._id}`
+        link.appendChild(title) 
+        cardBody.appendChild(tag)
+        cardBody.appendChild(link)
+        card.appendChild(imgContainer)
+        card.appendChild(cardBody)
+        var cardContainer = document.getElementById('card-container')
+        cardContainer.appendChild(card)
+      }
+    }
+  </script>
 </body>
 
 </html>
