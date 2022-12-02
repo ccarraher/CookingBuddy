@@ -71,8 +71,9 @@
 
     <button class="submitButton" type="button" onClick="upload(this.form)">Submit</button>
   </form>
+  <div class="res" id="res"></div>
   </div> <!-- box -->
-  <!--"images": ${imageElement}-->
+  
 
   <script>
     function upload(form) {
@@ -121,7 +122,15 @@
         Http.send(JSON.stringify(data));
 
         Http.onreadystatechange = (e) => {
-          console.log(Http.responseText)
+          if(Http.status == 200) {
+            var resText = document.getElementById('res')
+            resText.innerText = "Success"
+            resText.style.color = 'green'
+          } else {
+            var resText = document.getElementById('res')
+            resText.innerText = "Error"
+            resText.style.color = 'red'
+          }
         }
       };
 
