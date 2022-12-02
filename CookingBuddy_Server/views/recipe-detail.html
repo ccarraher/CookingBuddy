@@ -33,15 +33,15 @@
   </Header>
 
 <!--recipe name container-->
-  <div class="recipe-title-box" id="recipe-title">
-    <h1>Recipe Title</h1>
+  <div class="recipe-title-box">
+    <h1 id="recipe-title"></h1>
   </div>
 
 <!--box containing entire recipe-->
   <div class="recipe-box">
 
     <div class="recipe-photos-container">
-      <img src="/sample.png" class="img-recipe"></img>
+      <img src="" id="recipe-img" class="img-recipe"></img>
     </div>
 
     <div class="text-items-container">
@@ -49,12 +49,12 @@
 
         <div class="price-container">
           <h2 class="recipe-h2">Price</h2>
-          <div id="price-link" class="price-link">$1.20</div>
+          <div id="price-link" class="price-link"></div>
         </div>
 
         <div class="ingredients-container">
           <h2 class="recipe-h2">Ingredients</h2> 
-          <div id="ingredients-link" class="ingredients-link">1 tbsp olive oil<br>1 tsp onion powder<br>1 tsp salt<br>1/2 tsp pepper</div>
+          <div id="ingredients-link" class="ingredients-link"></div>
         </div>
 
       </div>
@@ -62,16 +62,7 @@
       <!--container for steps-->
       <div class="steps-container">
         <h2 class="recipe-h2">Steps</h2>
-        <div id="steps-link" class="steps-link">
-          To a large pot of boiling water add the pasta and cook according to the box instructions. 
-          Reserve one cup of the pasta water, and drain remaining water. Set pasta and pasta water aside.
-          <br><br>
-          To a large skillet over medium heat, add the oil. Once hot, add in the onion and pepper.
-           Sauté for 5-8 minutes or until the veggies are tender. Stir in the heavy cream and seasonings
-            and heat to a simmer. Let simmer for one minute and add in the diced tomatoes and green chiles,
-             then whisk in the reserved water. Once well combined, stir in the cooked pasta and Parmesan cheese. Enjoy.
-
-        </div>
+        <div id="steps-link" class="steps-link"></div>
       </div>
 
     </div>  
@@ -80,7 +71,25 @@
 
 
   <script>
-    
+    const id = window.location.pathname.split("/")[2]
+    const Http = new XMLHttpRequest();
+    const url=`http://localhost:3000/recipe-api/getOne/${id}`;
+    Http.open('GET', url)
+    Http.send()
+    Http.onreadystatechange = (e) => {
+      if(Http.readyState == XMLHttpRequest.DONE) {
+        var res = JSON.parse(Http.responseText)
+        fillInData(res)
+      }
+    }
+
+    function fillInData(data) {
+      document.getElementById('recipe-title').innerText = data.title
+      document.getElementById('recipe-img').src = data.images
+      document.getElementById('price-link').innerText = '$' + data.price
+      document.getElementById('ingredients-link').innerText = data.ingredients
+      document.getElementById('steps-link').innerText = data.steps
+    }
   </script>
 </body>
 
