@@ -21,6 +21,7 @@ recipeController.post('/post', async (req, res) => {
             ingredients: req.body.ingredients,
             steps: req.body.steps,
             price: req.body.price,
+            images: req.body.images,
         })
         
         //add recipe object to DB
