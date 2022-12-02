@@ -15,7 +15,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
-    <style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"> 
+   
+   <style>
     </style>
 </head>
 
@@ -36,39 +38,43 @@
   </div>
 
 <!--box containing entire recipe-->
-  <div class="recipe-outer-container">
+  <div class="recipe-box">
 
     <div class="recipe-photos-container">
-      <div id="img-link" class="img-link"></div>
+      <img src="/sample.png" class="img-recipe"></img>
     </div>
 
-    <div class="price-and-ingredients-container">
+    <div class="text-items-container">
+      <div class="price-and-ingredients-container">
 
-      <div class="price-container">
-        <label for = "price">Price</label>
-        <br>
-        <div id="price-link" class="price-link"></div>
-        <br>
-        <br>
+        <div class="price-container">
+          <h2 class="recipe-h2">Price</h2>
+          <div id="price-link" class="price-link">$1.20</div>
+        </div>
+
+        <div class="ingredients-container">
+          <h2 class="recipe-h2">Ingredients</h2> 
+          <div id="ingredients-link" class="ingredients-link">1 tbsp olive oil<br>1 tsp onion powder<br>1 tsp salt<br>1/2 tsp pepper</div>
+        </div>
+
       </div>
 
-      <div class="ingredients-container">
-        <label for = "ingredients">Ingredients</label> 
-        <br>
-        <div id="ingredients-link" class="ingredients-link"></div>
-        <br>
+      <!--container for steps-->
+      <div class="steps-container">
+        <h2 class="recipe-h2">Steps</h2>
+        <div id="steps-link" class="steps-link">
+          To a large pot of boiling water add the pasta and cook according to the box instructions. 
+          Reserve one cup of the pasta water, and drain remaining water. Set pasta and pasta water aside.
+          <br><br>
+          To a large skillet over medium heat, add the oil. Once hot, add in the onion and pepper.
+           Sauté for 5-8 minutes or until the veggies are tender. Stir in the heavy cream and seasonings
+            and heat to a simmer. Let simmer for one minute and add in the diced tomatoes and green chiles,
+             then whisk in the reserved water. Once well combined, stir in the cooked pasta and Parmesan cheese. Enjoy.
+
+        </div>
       </div>
 
-    </div>
-
-    <!--container for steps-->
-    <div class="steps-container">
-      <label for = "steps">Steps</label>
-      <br>
-      <div id="steps-link" class="steps-link"></div>
-      <br>
-    </div>
-
+    </div>  
   </div>
 
 

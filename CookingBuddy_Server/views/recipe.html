@@ -10,10 +10,12 @@
 
   <link rel = "stylesheet" href="/styles.css" type="text/css">
 
-  <!-- Linking font -->
+  <!-- Linking fonts, bubblegum + inter-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"> 
+
 </head>
 
 <body>
@@ -31,21 +33,19 @@
   <h1>Upload a Recipe</h1>
   <form class=upload-form onsubmit="upload(this.form); return false;">
     <label for = "recipeName">Recipe Title</label>
-    <br>
     <input type="text" id ="recipeName" name = "recipeName" value = ""></input>
     <br>
 
     <div class="container-2">
       <div class="container-2-inner">
         <label for = "ingredients">Ingredients</label>
-        <br>
+
         <textarea id ="ingredients" name = "ingredients" value = "" style="height:200px"></textarea>
         <br>
       </div>
 
       <div class="container-2-inner">
         <label for = "steps">Steps</label>
-        <br>
         <textarea id ="steps" name = "steps" value = "" style="height:200px"></textarea>
         <br>
     </div>
@@ -54,7 +54,6 @@
     <div class="container-3">
       <div class="container-3-inner">
         <label for = "price">Price (optional)</label>
-        <br>
         <input type="number" id ="price" name = "price" value = ""></input>
         <br>
         <br>
@@ -62,14 +61,13 @@
 
       <div class="container-3-inner">
         <label for = "image">Image (optional)</label>
-        <br>
         <input type="file" accept ="image/*" id ="image" name = "image" value = ""></input>
         <br>
         <br>
       </div> <!-- container 3 inner-->
     </div> <!-- container 3-->
 
-    <button class="submitButton" type="button" onClick="upload(this.form)">Submit</button>
+    <button class="button-3" type="button" onClick="upload(this.form)">Submit</button>
   </form>
   <div class="res" id="res"></div>
   </div> <!-- box -->
