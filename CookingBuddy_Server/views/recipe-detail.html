@@ -8,12 +8,70 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    
+    <link rel = "stylesheet" href="/styles.css" type="text/css">
+
+  <!-- Linking font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
     <style>
     </style>
 </head>
 
 <body>
-  <div>Hello world</div>
+  <!--header-->
+  <Header class="header">
+    <a href="/home.html" class="logo">CookingBuddy</a>
+    
+    <div class="links">
+      <a href="/recipe" class="header_link">Upload</a>
+      <button class="button-3" onclick="location.href='/register.html'" type="button">Register</button>
+    </div>
+  </Header>
+
+<!--recipe name container-->
+  <div class="recipe-title-box" id="recipe-title">
+    <h1>Recipe Title</h1>
+  </div>
+
+<!--box containing entire recipe-->
+  <div class="recipe-outer-container">
+
+    <div class="recipe-photos-container">
+      <div id="img-link" class="img-link"></div>
+    </div>
+
+    <div class="price-and-ingredients-container">
+
+      <div class="price-container">
+        <label for = "price">Price</label>
+        <br>
+        <div id="price-link" class="price-link"></div>
+        <br>
+        <br>
+      </div>
+
+      <div class="ingredients-container">
+        <label for = "ingredients">Ingredients</label> 
+        <br>
+        <div id="ingredients-link" class="ingredients-link"></div>
+        <br>
+      </div>
+
+    </div>
+
+    <!--container for steps-->
+    <div class="steps-container">
+      <label for = "steps">Steps</label>
+      <br>
+      <div id="steps-link" class="steps-link"></div>
+      <br>
+    </div>
+
+  </div>
+
+
 
   <script>
     
