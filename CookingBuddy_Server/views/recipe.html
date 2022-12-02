@@ -76,38 +76,67 @@
 
   <script>
     function upload(form) {
-     
-     var recipeNameElement = form.recipeName.value;
-     console.log(recipeNameElement)
+     //<link href="css/style.css" rel="stylesheet">
+      var recipeNameElement = form.recipeName.value;
 
-     var stepsElement = form.steps.value;
-     console.log(stepsElement)
+      var stepsElement = form.steps.value;
 
-     var ingredientsElement = form.ingredients.value;
-     console.log(ingredientsElement)
+      var ingredientsElement = form.ingredients.value;
 
-     var priceElement = form.price.value;
-     console.log(priceElement)
+      var priceElement = form.price.value;
 
-     var imageElement = form.image.value;
-     console.log(imageElement)
+      var imageElement = form.image;
 
-     const Http = new XMLHttpRequest();
-     const url='http://localhost:3000/recipe-api/post';
-     let data = {
-     "title": recipeNameElement,
-     "ingredients": ingredientsElement,
-     "steps": stepsElement,
-     "price": priceElement,
-    }
-     Http.open("POST", url);
-     Http.setRequestHeader("Accept","application/json")
-     Http.setRequestHeader("Content-Type","application/json")
-     Http.send(JSON.stringify(data));
+      var thumbsnapApiKey = '0000261c845cfa6d6a48827b36c4589e'
+      const xhr = new XMLHttpRequest()
+      xhr.onload = function() {
+        var json;
 
-     Http.onreadystatechange = (e) => {
-      console.log(Http.responseText)
-    }
+        console.log("upload done", xhr);
+
+        if (xhr.status < 200 || xhr.status >= 300) {
+            console.log('HTTP Error: ' + xhr.status);
+            return;
+        }
+
+        json = JSON.parse(xhr.responseText);
+
+        if (!json || typeof json.data.media != 'string') {
+            console.log('Invalid JSON: ' + xhr.responseText);
+            return;
+        }
+
+        const Http = new XMLHttpRequest();
+        const url='http://localhost:3000/recipe-api/post';
+        let data = {
+          "title": recipeNameElement,
+          "ingredients": ingredientsElement,
+          "steps": stepsElement,
+          "price": priceElement,
+          "images": json.data.media
+        }
+        Http.open("POST", url);
+        Http.setRequestHeader("Accept","application/json")
+        Http.setRequestHeader("Content-Type","application/json")
+        Http.send(JSON.stringify(data));
+
+        Http.onreadystatechange = (e) => {
+          console.log(Http.responseText)
+        }
+      };
+
+      xhr.onerror = function () {
+          console.log('Image upload failed due to a XHR Transport error. Code: ' + xhr.status);
+      };
+
+      const formData = new FormData();
+      formData.append('key', thumbsnapApiKey);
+      formData.append('media', imageElement.files[0]);
+
+      const imageUrl = 'https://thumbsnap.com/api/upload'
+      xhr.open('POST', imageUrl)
+      xhr.send(formData)
+
    }
   </script>
 </body>

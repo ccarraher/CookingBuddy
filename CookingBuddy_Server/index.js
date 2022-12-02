@@ -6,7 +6,7 @@ require('dotenv').config();
 const mongoString = process.env.DATABASE_URL
 const router = express.Router()
 const APP_PORT = 3000
-const path = require('path')
+const path = require('path');
 
 // Connects to the database
 mongoose.connect(mongoString)
@@ -38,6 +38,14 @@ router.get('/register', (req, res) => {
 
 router.get('/recipe', (req, res) => {
     res.sendFile(path.join(__dirname + '/views'+'/recipe.html'))
+})
+
+router.get('/search', (req, res) => {
+    res.sendFile(path.join(__dirname + '/views'+'/search.html'))
+})
+
+router.get('/recipe/:id', (req, res) => {
+    res.sendFile(path.join(__dirname + '/views' + '/recipe-detail.html'))
 })
 
 
